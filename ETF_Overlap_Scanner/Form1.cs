@@ -20,15 +20,23 @@ namespace ETF_Overlap_Scanner
         {
             ETF newETF = null;
             string isin = textBox1.Text;
-            switch (comboBox1.SelectedIndex)
+            try
             {
-                case 0:
-                    newETF = new IShares(isin);
-                    break;
+                switch (comboBox1.SelectedIndex)
+                {
+                    case 0:
+                        newETF = new IShares(isin);
+                        break;
 
-                case 1:
-                    newETF = new Xtrackers(isin);
-                    break;
+                    case 1:
+                        newETF = new Xtrackers(isin);
+                        break;
+                }
+            }
+            catch
+            {
+                System.Windows.Forms.MessageBox.Show("Es scheint ein Problem beim hinzufügen gegeben zu haben. Ist der Herausgeber richtig eingestellt?");
+                return;
             }
             etfs.Add(newETF);
             TreeNode node = new TreeNode($"{isin} ({newETF.GetIsinList().Count})");

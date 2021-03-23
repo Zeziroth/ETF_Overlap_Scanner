@@ -53,7 +53,7 @@ namespace ETF_Overlap_Scanner
             {
                 goto again;
             }
-            
+
             string label = preJson[0].label;
             string id = preJson[0].id;
 
@@ -66,6 +66,7 @@ namespace ETF_Overlap_Scanner
             csv.RemoveAt(0);
 
             this.ParseParams(headlines, csv, ISIN_FIELD, NAME_FIELD, WEIGHT_FIELD);
+
         }
 
         public IShares(string isin)
